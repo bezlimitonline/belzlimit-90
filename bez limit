@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Безлимит — совершенный оператор связи</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{--purple:#7B2FFF;--purple-light:#9B5FFF;--dark:#0E0E1A;--card:#16162A;--text:#fff;--muted:#9999BB}
+    body{background:var(--dark);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh}
+    .wrap{max-width:720px;margin:0 auto;padding:0 20px 60px}
+
+    nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid rgba(255,255,255,0.06);flex-wrap:wrap;gap:12px}
+    .logo{font-family:'Unbounded',sans-serif;font-size:18px;font-weight:700;text-decoration:none;color:#fff}
+    .logo span{color:var(--purple-light)}
+
+    .hero{text-align:center;padding:60px 0 40px}
+    .badge{display:inline-block;background:rgba(123,47,255,0.2);border:1px solid var(--purple);color:var(--purple-light);font-size:12px;border-radius:20px;padding:4px 14px;letter-spacing:.08em;font-family:'Unbounded',sans-serif;margin-bottom:24px}
+    .hero h1{font-family:'Unbounded',sans-serif;font-size:clamp(26px,6vw,46px);font-weight:700;line-height:1.2;margin-bottom:16px}
+    .hero h1 span{color:var(--purple-light)}
+    .hero p{color:var(--muted);font-size:15px;max-width:420px;margin:0 auto 32px;line-height:1.7}
+
+    .btn-main{display:inline-block;background:var(--purple);color:#fff;font-family:'Unbounded',sans-serif;font-size:14px;padding:14px 32px;border-radius:12px;text-decoration:none;transition:background .2s}
+    .btn-main:hover{background:var(--purple-light)}
+    .btn-ghost{display:inline-block;color:var(--muted);font-size:14px;padding:14px 20px;text-decoration:none}
+    .btn-ghost:hover{color:#fff}
+
+    .number-show{background:var(--card);border:1px solid rgba(123,47,255,0.3);border-radius:20px;padding:28px;margin:40px 0;text-align:center}
+    .number-show .label{font-size:12px;color:var(--muted);letter-spacing:.1em;margin-bottom:12px;font-family:'Unbounded',sans-serif}
+    .number-big{font-family:'Unbounded',sans-serif;font-size:clamp(22px,5vw,36px);font-weight:700;letter-spacing:.06em}
+    .number-big span{color:var(--purple-light)}
+    .number-sub{color:var(--muted);font-size:13px;margin-top:8px}
+
+    .features{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:40px 0}
+    @media(max-width:480px){.features{grid-template-columns:1fr}}
+    .feat{background:var(--card);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:22px}
+    .feat-icon{font-size:22px;margin-bottom:10px}
+    .feat h3{font-family:'Unbounded',sans-serif;font-size:12px;margin-bottom:6px;font-weight:700}
+    .feat p{color:var(--muted);font-size:13px;line-height:1.6}
+
+    .cta{background:linear-gradient(135deg,rgba(123,47,255,0.3),rgba(255,60,247,0.12));border:1px solid rgba(123,47,255,0.4);border-radius:24px;padding:40px;text-align:center;margin:40px 0}
+    .cta h2{font-family:'Unbounded',sans-serif;font-size:clamp(16px,4vw,24px);margin-bottom:12px}
+    .cta p{color:var(--muted);margin-bottom:24px;font-size:14px}
+    .btn-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+    /* Legal */
+    .legal-section{margin:48px 0 32px}
+    .legal-title{font-family:'Unbounded',sans-serif;font-size:16px;margin-bottom:6px;text-align:center}
+    .legal-sub{color:var(--muted);font-size:13px;text-align:center;margin-bottom:24px}
+    .legal-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    @media(max-width:480px){.legal-grid{grid-template-columns:1fr}}
+    .legal-item{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:16px 18px;text-decoration:none;color:var(--text);transition:border-color .2s}
+    .legal-item:hover{border-color:rgba(123,47,255,0.6)}
+    .legal-item .icon{font-size:20px;flex-shrink:0}
+    .legal-item .info{}
+    .legal-item .info strong{font-family:'Unbounded',sans-serif;font-size:11px;display:block;margin-bottom:3px}
+    .legal-item .info span{color:var(--muted);font-size:11px}
+    .legal-item .arrow{margin-left:auto;color:var(--muted);font-size:14px;flex-shrink:0}
+
+    .footer{text-align:center;color:var(--muted);font-size:12px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06)}
+    .social{display:flex;justify-content:center;gap:16px;margin-bottom:14px;flex-wrap:wrap}
+    .social a{color:var(--muted);font-size:13px;text-decoration:none}
+    .social a:hover{color:#fff}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a href="https://bezlimit.ru" class="logo">без<span>лимит</span></a>
+      <a href="https://bezlimit.ru/plans" class="btn-main" style="padding:10px 20px;font-size:12px">Тарифы</a>
+    </nav>
+
+    <div class="hero">
+      <div class="badge">совершенный оператор связи</div>
+      <h1>Красивый номер.<br><span>Безлимитный</span> интернет.</h1>
+      <p>Выберите эксклюзивный номер из самой большой базы в России и подключите выгодный тариф.</p>
+      <a href="https://bezlimit.ru/number" class="btn-main">Подобрать номер</a>
+      <a href="https://bezlimit.ru/plans" class="btn-ghost">Смотреть тарифы →</a>
+    </div>
+
+    <div class="number-show">
+      <div class="label">пример красивого номера</div>
+      <div class="number-big">+7 (925) <span>163</span>-<span>77</span>-<span>77</span></div>
+      <div class="number-sub">Такой номер запомнят с первого раза</div>
+    </div>
+
+    <div class="features">
+      <div class="feat">
+        <div class="feat-icon">📞</div>
+        <h3>Поддержка 24/7</h3>
+        <p>Персональный менеджер решит любой вопрос круглосуточно</p>
+      </div>
+
+      <div class="feat">
+        <div class="feat-icon">🎁</div>
+        <h3>Бесплатная связь</h3>
+        <p>Приводи друзей и оплачивай до 100% тарифа бонусами</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🌍</div>
+        <h3>По всей России</h3>
+        <p>Доставка SIM-карты и подключение в любом городе</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">✨</div>
+        <h3>Эксклюзивные номера</h3>
+        <p>Крупнейшая база красивых номеров для бизнеса и жизни</p>
+      </div>
+    </div>
+
+    <div class="cta">
+      <h2>Готов подключиться?</h2>
+      <p>Быстрое оформление, бесплатная доставка SIM-карты</p>
+      <div class="btn-row">
+        <a href="https://bezlimit.ru/number" class="btn-main">Выбрать номер</a>
+        <a href="https://bezlimit.ru/plans" class="btn-main" style="background:rgba(255,255,255,0.1)">Все тарифы</a>
+      </div>
+    </div>
+
+    <!-- Legal -->
+    <div class="legal-section">
+      <div class="legal-title">Юридическая информация</div>
+      <div class="legal-sub">Ознакомьтесь с нашими документами</div>
+      <div class="legal-grid">
+        <a class="legal-item" href="https://bezlimit.ru/legal" target="_blank">
+          <span class="icon">📄</span>
+          <span class="info"><strong>Оферта на абонентское обслуживание</strong><span>Договор пользовательского обслуживания</span></span>
+          <span class="arrow">↗</span>
+        </a>
+        <a class="legal-item" href="https://bezlimit.ru/legal" target="_blank">
+          <span class="icon">📋</span>
+          <span class="info"><strong>Пользовательское соглашение</strong><span>Права и обязанности сторон</span></span>
+          <span class="arrow">↗</span>
+        </a>
+        <a class="legal-item" href="https://bezlimit.ru/legal" target="_blank">
+          <span class="icon">🔒</span>
+          <span class="info"><strong>Политика конфиденциальности</strong><span>Обработка персональных данных</span></span>
+          <span class="arrow">↗</span>
+        </a>
+        <a class="legal-item" href="https://bezlimit.ru/legal" target="_blank">
+          <span class="icon">📱</span>
+          <span class="info"><strong>Оферта резервирования номера</strong><span>Условия бронирования ИТН</span></span>
+          <span class="arrow">↗</span>
+        </a>
+        <a class="legal-item" href="https://bezlimit.ru/legal" target="_blank">
+          <span class="icon">📡</span>
+          <span class="info"><strong>Оферта услуг связи</strong><span>Условия предоставления услуг</span></span>
+          <span class="arrow">↗</span>
+        </a>
+        <a class="legal-item" href="https://bezlimit.ru/legal" target="_blank">
+          <span class="icon">🗂️</span>
+          <span class="info"><strong>Все документы</strong><span>Полный список на bezlimit.ru</span></span>
+          <span class="arrow">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="social">
+        <a href="https://vk.com/bezlimit.official">ВКонтакте</a>
+        <a href="https://t.me/bezlimitofficial_tg">Telegram</a>
+        <a href="https://ok.ru/bezlimitofficial">ОК</a>
+        <a href="https://rutube.ru/channel/30803606/">Rutube</a>
+        <a href="https://www.youtube.com/channel/UCs2uaoSV9noMOKhXeLW56kA/featured">YouTube</a>
+        <a href="https://dzen.ru/bezlimit">Дзен</a>
+        <a href="mailto:bezlimitonline@proton.me">bezlimitonline@proton.me</a>
+      </div>
+
+      © Безлимит 2026
+    </div>
+  </div>
+</body>
+</html>
