@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Безлимит — совершенный оператор связи</title>
+  <title>Безлимит — оператор связи</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <style>
@@ -45,24 +46,48 @@
     .cta p{color:var(--muted);margin-bottom:24px;font-size:14px}
     .btn-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 
+    /* Agent notice */
+    .agent-notice{background:rgba(123,47,255,0.08);border:1px solid rgba(123,47,255,0.25);border-radius:14px;padding:16px 20px;margin:32px 0;font-size:12px;color:var(--muted);line-height:1.7}
+    .agent-notice strong{color:rgba(255,255,255,0.7)}
+
     /* Legal */
     .legal-section{margin:48px 0 32px}
     .legal-title{font-family:'Unbounded',sans-serif;font-size:16px;margin-bottom:6px;text-align:center}
     .legal-sub{color:var(--muted);font-size:13px;text-align:center;margin-bottom:24px}
     .legal-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
     @media(max-width:480px){.legal-grid{grid-template-columns:1fr}}
-    .legal-item{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:16px 18px;text-decoration:none;color:var(--text);transition:border-color .2s}
+    .legal-item{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:16px 18px;text-decoration:none;color:var(--text);transition:border-color .2s;cursor:pointer}
     .legal-item:hover{border-color:rgba(123,47,255,0.6)}
     .legal-item .icon{font-size:20px;flex-shrink:0}
-    .legal-item .info{}
     .legal-item .info strong{font-family:'Unbounded',sans-serif;font-size:11px;display:block;margin-bottom:3px}
     .legal-item .info span{color:var(--muted);font-size:11px}
     .legal-item .arrow{margin-left:auto;color:var(--muted);font-size:14px;flex-shrink:0}
+
+    /* Modal */
+    .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:100;overflow-y:auto;padding:20px}
+    .modal-overlay.active{display:flex;align-items:flex-start;justify-content:center}
+    .modal{background:#1A1A2E;border:1px solid rgba(123,47,255,0.3);border-radius:20px;max-width:640px;width:100%;padding:32px;margin:auto;position:relative}
+    .modal-close{position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.1);border:none;color:#fff;font-size:16px;width:32px;height:32px;border-radius:8px;cursor:pointer}
+    .modal-close:hover{background:rgba(255,255,255,0.2)}
+    .modal h3{font-family:'Unbounded',sans-serif;font-size:14px;margin-bottom:20px;padding-right:40px;line-height:1.4}
+    .modal-body{color:var(--muted);font-size:13px;line-height:1.8;max-height:60vh;overflow-y:auto;padding-right:8px}
+    .modal-body h4{font-family:'Unbounded',sans-serif;font-size:11px;color:#fff;margin:16px 0 6px}
+    .modal-body p{margin-bottom:10px}
+    .modal-body::-webkit-scrollbar{width:4px}
+    .modal-body::-webkit-scrollbar-thumb{background:rgba(123,47,255,0.5);border-radius:2px}
+
+    /* Cookie banner */
+    .cookie-banner{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1A1A2E;border:1px solid rgba(123,47,255,0.4);border-radius:16px;padding:16px 20px;max-width:520px;width:calc(100% - 40px);display:flex;align-items:center;gap:16px;flex-wrap:wrap;z-index:200;box-shadow:0 8px 32px rgba(0,0,0,0.4)}
+    .cookie-banner p{font-size:12px;color:var(--muted);flex:1;min-width:200px;line-height:1.5}
+    .cookie-banner p a{color:var(--purple-light);text-decoration:none}
+    .cookie-btn{background:var(--purple);color:#fff;border:none;border-radius:10px;padding:8px 20px;font-family:'Unbounded',sans-serif;font-size:11px;cursor:pointer;white-space:nowrap}
+    .cookie-btn:hover{background:var(--purple-light)}
 
     .footer{text-align:center;color:var(--muted);font-size:12px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.06)}
     .social{display:flex;justify-content:center;gap:16px;margin-bottom:14px;flex-wrap:wrap}
     .social a{color:var(--muted);font-size:13px;text-decoration:none}
     .social a:hover{color:#fff}
+    .footer-requisites{margin-top:14px;font-size:11px;color:rgba(255,255,255,0.3);line-height:1.8}
   </style>
 </head>
 <body>
@@ -73,9 +98,9 @@
     </nav>
 
     <div class="hero">
-      <div class="badge">совершенный оператор связи</div>
-      <h1>Красивый номер.<br><span>Безлимитный</span> интернет.</h1>
-      <p>Выберите эксклюзивный номер из самой большой базы в России и подключите выгодный тариф.</p>
+      <div class="badge">партнёр оператора связи</div>
+      <h1>Красивый номер.<br><span>Выгодный</span> тариф.</h1>
+      <p>Подберите эксклюзивный номер и подключите удобный тариф через официального партнёра Безлимит.</p>
       <a href="https://bezlimit.ru/number" class="btn-main">Подобрать номер</a>
       <a href="https://bezlimit.ru/plans" class="btn-ghost">Смотреть тарифы →</a>
     </div>
@@ -92,7 +117,6 @@
         <h3>Поддержка 24/7</h3>
         <p>Персональный менеджер решит любой вопрос круглосуточно</p>
       </div>
-
       <div class="feat">
         <div class="feat-icon">🎁</div>
         <h3>Бесплатная связь</h3>
@@ -106,7 +130,7 @@
       <div class="feat">
         <div class="feat-icon">✨</div>
         <h3>Эксклюзивные номера</h3>
-        <p>Крупнейшая база красивых номеров для бизнеса и жизни</p>
+        <p>Большой выбор красивых номеров для бизнеса и жизни</p>
       </div>
     </div>
 
@@ -119,6 +143,7 @@
       </div>
     </div>
 
+
     <!-- Legal -->
     <div class="legal-section">
       <div class="legal-title">Юридическая информация</div>
@@ -126,33 +151,23 @@
       <div class="legal-grid">
         <a class="legal-item" href="https://bezlimit.ru/legal" target="_blank">
           <span class="icon">📄</span>
-          <span class="info"><strong>Оферта на абонентское обслуживание</strong><span>Договор пользовательского обслуживания</span></span>
-          <span class="arrow">↗</span>
-        </a>
-        <a class="legal-item" href="https://bezlimit.ru/legal" target="_blank">
-          <span class="icon">📋</span>
-          <span class="info"><strong>Пользовательское соглашение</strong><span>Права и обязанности сторон</span></span>
+          <span class="info"><strong>Оферта на абонентское обслуживание</strong><span>Условия договора с ООО «Безлимит»</span></span>
           <span class="arrow">↗</span>
         </a>
         <a class="legal-item" href="https://bezlimit.ru/legal" target="_blank">
           <span class="icon">🔒</span>
-          <span class="info"><strong>Политика конфиденциальности</strong><span>Обработка персональных данных</span></span>
+          <span class="info"><strong>Политика конфиденциальности ООО «Безлимит»</strong><span>Обработка персональных данных</span></span>
           <span class="arrow">↗</span>
         </a>
-        <a class="legal-item" href="https://bezlimit.ru/legal" target="_blank">
-          <span class="icon">📱</span>
-          <span class="info"><strong>Оферта резервирования номера</strong><span>Условия бронирования ИТН</span></span>
-          <span class="arrow">↗</span>
+        <a class="legal-item" onclick="openModal('privacy_ip')">
+          <span class="icon">🔐</span>
+          <span class="info"><strong>Политика конфиденциальности</strong><span>Обработка данных агентом</span></span>
+          <span class="arrow">→</span>
         </a>
-        <a class="legal-item" href="https://bezlimit.ru/legal" target="_blank">
-          <span class="icon">📡</span>
-          <span class="info"><strong>Оферта услуг связи</strong><span>Условия предоставления услуг</span></span>
-          <span class="arrow">↗</span>
-        </a>
-        <a class="legal-item" href="https://bezlimit.ru/legal" target="_blank">
-          <span class="icon">🗂️</span>
-          <span class="info"><strong>Все документы</strong><span>Полный список на bezlimit.ru</span></span>
-          <span class="arrow">↗</span>
+        <a class="legal-item" onclick="openModal('consent')">
+          <span class="icon">✅</span>
+          <span class="info"><strong>Согласие на обработку персональных данных</strong><span>Обработка данных агентом</span></span>
+          <span class="arrow">→</span>
         </a>
       </div>
     </div>
@@ -167,9 +182,111 @@
         <a href="https://dzen.ru/bezlimit">Дзен</a>
         <a href="mailto:bezlimitonline@proton.me">bezlimitonline@proton.me</a>
       </div>
-
-      © Безлимит 2026
+      <div class="footer-requisites">
+        ИП Базылев С.А. · ИНН 774317248097<br>
+        Официальный партнёр ООО «Безлимит» (ИНН 9725007063)<br>
+        Услуги связи оказываются ПАО «ВымпелКом» (ИНН 7713076301)
+      </div>
     </div>
   </div>
+
+  <!-- Modals -->
+  <div class="modal-overlay" id="modal-overlay" onclick="closeModalOutside(event)">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <h3 id="modal-title"></h3>
+      <div class="modal-body" id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Cookie banner -->
+  <div class="cookie-banner" id="cookie-banner">
+    <p>Мы используем cookie-файлы для улучшения работы сайта. Продолжая использование сайта, вы соглашаетесь с <a onclick="openModal('privacy_ip')" style="cursor:pointer">политикой конфиденциальности</a> ИП Базылев С.А.</p>
+    <button class="cookie-btn" onclick="acceptCookies()">Принять</button>
+  </div>
+
+  <script>
+    const docs = {
+      privacy_ip: {
+        title: 'Политика конфиденциальности ИП Базылев С.А.',
+        body: `
+          <h4>Общие положения</h4>
+          <p>Настоящая Политика конфиденциальности регулирует порядок обработки персональных данных пользователей сайта индивидуальным предпринимателем Базылевым Сергеем Александровичем (ИНН 774317248097), действующим в качестве официального агента ООО «Безлимит».</p>
+
+          <h4>Какие данные собираются</h4>
+          <p>При обращении через форму обратной связи (электронная почта) могут быть собраны: имя, адрес электронной почты, номер телефона и иные сведения, добровольно предоставленные пользователем.</p>
+
+          <h4>Цели обработки</h4>
+          <p>Персональные данные обрабатываются исключительно в целях: консультирования по услугам связи, оформления заявок на подключение, направления коммерческих предложений (при наличии согласия), исполнения агентских обязательств перед ООО «Безлимит».</p>
+
+          <h4>Передача данных третьим лицам</h4>
+          <p>Персональные данные могут быть переданы ООО «Безлимит» (ИНН 9725007063) и ПАО «ВымпелКом» (ИНН 7713076301) исключительно в целях оказания услуг связи. Передача иным лицам без согласия пользователя не осуществляется.</p>
+
+          <h4>Cookie-файлы</h4>
+          <p>Сайт может использовать технические cookie-файлы для обеспечения корректной работы. Метрические и аналитические данные не собираются без явного согласия пользователя.</p>
+
+          <h4>Права пользователя</h4>
+          <p>Пользователь вправе в любое время отозвать согласие на обработку персональных данных, направив соответствующий запрос на адрес: bezlimitonline@proton.me</p>
+
+          <h4>Контакты</h4>
+          <p>ИП Базылев С.А. · ИНН 774317248097<br>
+          E-mail: bezlimitonline@proton.me</p>
+        `
+      },
+      consent: {
+        title: 'Согласие на обработку персональных данных',
+        body: `
+          <p>Настоящим я, субъект персональных данных, даю своё согласие индивидуальному предпринимателю <strong>Базылеву Сергею Александровичу</strong> (ИНН 774317248097), именуемому далее «Оператор», на обработку следующих персональных данных:</p>
+          <p>— фамилия, имя, отчество;<br>
+          — адрес электронной почты;<br>
+          — номер контактного телефона;</p>
+
+          <h4>Цели обработки</h4>
+          <p>Персональные данные обрабатываются в целях консультирования по вопросам подключения услуг связи и оформления заявок через агента ООО «Безлимит».</p>
+
+          <h4>Перечень действий</h4>
+          <p>Сбор, запись, систематизация, хранение, использование, передача (в том числе ООО «Безлимит» и ПАО «ВымпелКом» в рамках оказания услуг связи), обезличивание, блокирование, удаление и уничтожение персональных данных.</p>
+
+          <h4>Срок действия согласия</h4>
+          <p>Согласие действует с момента его предоставления до достижения целей обработки или до момента его отзыва.</p>
+
+          <h4>Отзыв согласия</h4>
+          <p>Вы вправе в любое время отозвать данное согласие, направив письменное уведомление на адрес: bezlimitonline@proton.me</p>
+
+          <h4>Оператор</h4>
+          <p>ИП Базылев С.А. · ИНН 774317248097<br>
+          E-mail: bezlimitonline@proton.me</p>
+        `
+      }
+    };
+
+    function openModal(key) {
+      const doc = docs[key];
+      document.getElementById('modal-title').textContent = doc.title;
+      document.getElementById('modal-body').innerHTML = doc.body;
+      document.getElementById('modal-overlay').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('modal-overlay').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function closeModalOutside(e) {
+      if (e.target === document.getElementById('modal-overlay')) closeModal();
+    }
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    function acceptCookies() {
+      document.getElementById('cookie-banner').style.display = 'none';
+      localStorage.setItem('cookie_accepted', '1');
+    }
+
+    if (localStorage.getItem('cookie_accepted')) {
+      document.getElementById('cookie-banner').style.display = 'none';
+    }
+  </script>
 </body>
 </html>
